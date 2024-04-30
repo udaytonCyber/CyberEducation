@@ -1,0 +1,192 @@
+While Graphical User Interfaces are very useful and generally intuitive, they do have their limits and
+downfalls. GUI's are designed to accomplish basic or common tasks, like opening an application.
+However, many applications have different ways of functioning that are sometimes not programmed
+into the GUI. This limits the user’s ability to control the system and applications.
+GUI's also take a significant amount of resources (CPU time, RAM memory, Hard disk space, etc) to run,
+which can hinder the performance of a system, especially with limited resources or demanding tasks
+running.
+GUI's can also make it more challenging to control systems remotely. Sometimes you need special tools
+or hardware to view a GUI over a network and using the tools can increase potential security
+vulnerabilities to the system.
+For these reasons and others, many computer experts prefer to use the Command Line Interface or CLI
+to control their systems. Linux in particular offers a lot of extras when using the CLI.
+Open the terminal application again. You will be greeted with what is known as a command prompt.
+There is some very useful information located here.
+You may notice the first part of the prompt contains the username that you are currently logged in as. In
+this case that is "student".
+
+After the ‘@’ symbol, there is the computer name or hostname that you are currently logged into.
+
+The next piece of information shows you what directory you are currently in. Right now, you are in the
+user’s home directory, which is indicated by a ~ (tilde). You will see this change as we begin to navigate.
+
+Next is the $ (dollar sign) symbol. This tells you what type of user you are in the Bash Shell (Commonly used in Linux). The $ (dollar sign) means you
+are logged in as a normal user. A # (hashtag/pound sign) means you are logged in as a super user
+(administrator). We will learn about these in a later lab.
+
+The last thing you see is the cursor. This is where we can import commands and information into the
+system.
+
+Now let’s learn some basic commands. Note that all commands are case sensitive.
+• Enter the command:
+pwd
+• Then hit enter to run.
+
+This command is known as print working directory. It outputs the path to the current directory you are
+working in. In this case it is the user’s home directory. This is useful to help you keep track of where you
+are in the file system.
+The next command is the list directory contents command, also known as a directory listing.
+• Enter the command:
+ls
+
+You will see an output that may look familiar. These are the names of the folders we saw earlier in the
+GUI file browser. This command prints out the contents in the current directory.
+Another very useful command is ‘man’. This command will display the ‘manual’ or help page another
+command.
+• Enter the command:
+man ls
+The screen displays information about the command and how to use the command. You can scroll
+through this information using the arrow keys or page-up and page-down keys. You can enter ‘q’ to get
+back to the command prompt.
+Commands can be used with options (also called switches or flags) that change the functionality of the command. You
+can find a list of available options in the man page for every command. Let’s try the long listing option
+for the ‘ls’ command.
+• Enter the command:
+ls –l
+
+Notice the output of the command has changed. Rather than simply listing the names of the directories,
+it listed other information about them as well. This is known as a long listing and helps us determine
+things like file permissions.
+We can even use more than one option at a time.
+• Enter the command:
+ls –lr
+
+This time the output was displayed in reverse order (alphabetically).
+Along with options, we can use Parameters (or Arguments) to input information into the command.
+This allows use to specify directory or file names, users, numbers, or many other types of data for the
+command to work with.
+• Enter the command:
+ls /var
+
+ 
+
+By adding the parameter “/var”, we told the command to do a directory listing of the “/var” directory,
+rather than the one we were currently in.
+Commands can also have aliases. Aliases are sort of like short cuts for longer more complicated
+commands. Some aliases are built into the system and we can create our own.
+• For example, enter the command:
+ll
+
+The output of this command may look familiar. The ‘ll’ command is an alias for ‘ls –l.'
+We can create our own aliases using the ‘alias’ command.
+• Enter the command:
+alias var=’ls –l /var’
+• Now enter the command alias you just created:
+var
+Now instead of having to type out ‘ls –l /var’ do get a long directory listing of the /var directory,
+you can simply type var.
+
+This alias will only last until the terminal application is shutdown. Later we will learn how to edit a
+configuration file to make this permanent.
+
+Sometimes we may want to use the output of a command in a different way other than just printing it to
+the screen. There are several different operators that allow us to do different things with the output.
+Let’s take a quick look at a couple of these.
+
+The pipe is a useful operator that allows us to take the output of a command and use it as a parameter
+for another command. The pipe is not a command by itself, so it must be used with two or more
+commands. In Linux, the pipe is represented by the | symbol. (It’s the key just above your Enter key,
+used with the Shift key.) Let’s see how this can be used to help us search through a large output.
+• Enter the command:
+ls /bin
+
+This outputs the directory listing of the /bin directory. But there is a lot of text in there, more than can
+fit on a single page.
+• Enter the command:
+ls /bin | less
+
+The ‘less’ command prints information out in a page-by-page format. By sending the output of the
+first command to the less command, we can scroll through the information using arrow keys or page-up
+and page-down. But there is still a lot of information to go through.
+
+Hit ‘q’ to exit ‘less’
+• Enter the command:
+ls /bin | grep bash
+
+ 
+
+This time, we took the output of the ‘ls’ command and sent it to the ‘grep’ command. ‘grep’ is a tool for
+searching through text. In this instance we are searching for the string pattern ‘bash’. The ‘grep’ command looks through the list of all of the directories and prints the ones that match the string to the
+screen.
+We can also take the output of a command and send it to a text file instead of printing to the screen. To
+do this we will use the ‘>’ (greater than) operator.
+• Enter the command:
+ls /bin > dir.txt
+It may appear that the command didn’t do anything since there is no output to the screen. What
+actually happened is the output was sent to a new file called dir.txt.
+• Enter the command:
+ls
+
+You can see the new file in the current directory. Since this is a text file, we can use the ‘less’ command
+to view it in a page-by-page format.
+• Enter the command:
+less dir.txt
+
+This looks similar to the output from before when we used the pipe with less, except we can tell this is a
+file because we can the filename highlighted at the bottom.
+• Hit ‘q’ to exit ‘less’
+If we wanted to add more information to the end of this file, we could use the operator ‘>>’ (two greater
+than symbols).
+• Enter the following commands:
+date >> dir.txt
+ls /etc >> dir.txt
+less dir.txt
+
+The >> appends to a file or creates the file if it doesn't exist.
+The > overwrites the file if it exists or creates it if it doesn't exist.
+
+
+The first two commands didn’t print anything to the screen, instead they send the output to the end of
+the dir.txt file. Hit the page down key several times until you see the date in the list of directories. The
+‘date’ command simply outputs the current date and time. This allows us to easily see where one output
+ends and another begins. The second list of directories is from the /etc directory.
+
+ 
+
+Hit q to exit ‘less’
+Another useful tool is known as the command ‘history’. The system keeps a record of all the commands
+you have entered for the current terminal session. You can see a list of these by entering the command
+‘history’
+
+ 
+
+While this list is useful for looking up past commands to check to see if you made a mistake, this really
+comes in handy to quickly reissue a command your previously typed. Use the up and down arrow keys
+to scroll through the most recent commands you entered. Each History entry is numbered, if you would like to run the command on line 950 again you can type !950 into the terminal to quickly run that again.
+
+You may also use !!  to run the last command again. A good use for this is if you need to run a previously typed command with Administrator rights. For Example try:
+
+whoami
+
+then:
+
+sudo !!
+
+ You will rerun whoami with administrator privileges. You will learn more about sudo  later on.
+
+
+Another useful tool in the CLI is known as ‘tab complete’. This is not a command itself, but rather just
+hitting the ‘Tab’ key on your keyboard to complete a long command or filename.
+Let’s say you were looking for a directory name, but you weren’t quite sure how to spell it.
+• Enter the letter ‘D’ into the command prompt
+• Hit the ‘Tab’ key twice in a row
+
+ 
+
+This will output all the file names that start with ‘D’ in the current directory. If we add a few more
+characters until the command name or directory is unique, tab complete will finish the rest for us, saving
+time and key strokes.
+• Enter the letters ‘Doc’
+• Hit the ‘Tab’ key once
+
+The system completed the word ‘Documents’ for you. This works on any directory, file, or command.
