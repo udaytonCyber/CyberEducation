@@ -89,7 +89,7 @@ Reboot the system with:
 
 
 
-reboot
+sudo shutdown -r now
 
 
 
