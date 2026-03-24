@@ -18,11 +18,9 @@ The `netstat` command displays network connections to our system.
 This screen shot shows the results you should see.
 
 Now we need to enter this command into a text file and change the permissions to be executable.
-* Open a new text file with vi called “connections.sh”
-vi connections.sh
+* Open a new text file with nano called “connections.sh”
+nano connections.sh
 * Add the text as follows and save the file:
-
-
 
 
 #!/bin/bash
