@@ -12,12 +12,12 @@ Apache does allow for other languages and services to be utilized as well. Some 
 
 We have already done most of the work needed to get our website up and running. We installed the Apache software (`httpd`), started and enabled the service (`httpd`), and even copied over the website files to the `/share/Developers` directory. The only thing left to do is make a few small edits to the HTML file and a small change to our configuration file.
 
-* Open the `index.html` file you copied earlier with "vi":
+* Open the `index.html` file you copied earlier with "nano":
 
 
 
 
-sudo vi /share/Developers/index.html
+sudo nano /share/Developers/index.html
 
 
 
@@ -45,12 +45,12 @@ html
 
 By default, Apache looks for website files in the directory `/var/www/html`, but we want to change this to our `Developers` directory. To do this, we need to change the `DocumentRoot` setting in the Apache configuration file.
 
-* Open the Apache configuration file with "vi":
+* Open the Apache configuration file with "nano":
 
 
 
 
-sudo vi /etc/httpd/conf/httpd.conf
+sudo nano /etc/httpd/conf/httpd.conf
 
 
 
@@ -76,5 +76,5 @@ sudo systemctl restart httpd
 
 Everything should be set. Let's test our website.
 
-* Open a browser window and enter: `http://<computername>` (replacing `<computername>` with your computer name.)
+* Open a browser window and enter: `http://<computername>` (replacing `<computername>` with your computer name or ip address.)
 * You should see a page!
